@@ -1,0 +1,430 @@
+{
+  "version": "13",
+  "site": "https://rapidpro.ilhasoft.mobi",
+  "flows": [
+    {
+      "name": "Chegada voluntario",
+      "uuid": "dd938cb3-c1dd-4c28-9c6b-7acfba2d6bb2",
+      "spec_version": "13.1.0",
+      "language": "base",
+      "type": "messaging",
+      "nodes": [
+        {
+          "uuid": "88f2b441-3984-4a4c-978d-6ba632048b65",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Oi @contact.name    que bom que quer fazer parte da comunidade do 1MiO!!! \nPara parar de falar comigo \u00e9 s\u00f3 digitar SAIR\ncomo posso ajudar voc\u00ea ?\n",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "a401a4e9-7633-46f8-a0de-1d86abac348f"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "2ad65981-40dc-415b-8e18-831ab8f3dd18",
+              "destination_uuid": "05a84fb5-d898-4a6f-9bad-b28b7e113a51"
+            }
+          ]
+        },
+        {
+          "uuid": "05a84fb5-d898-4a6f-9bad-b28b7e113a51",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "9c615df1-6771-4821-bd6f-ec29792978b8",
+            "cases": [
+              {
+                "arguments": [
+                  "discord"
+                ],
+                "type": "has_any_word",
+                "uuid": "bb7f267e-e12e-4718-adfc-d51cc7ec4b08",
+                "category_uuid": "64b1e930-29b8-408a-886f-1604b8e81281"
+              },
+              {
+                "arguments": [
+                  "duvidas"
+                ],
+                "type": "has_any_word",
+                "uuid": "927d3b3a-509e-4ee2-9d02-b1d1b1ca156a",
+                "category_uuid": "ffed1b0a-72d2-4169-8d25-a67d30a61ff6"
+              },
+              {
+                "arguments": [
+                  "cargo"
+                ],
+                "type": "has_any_word",
+                "uuid": "7e19a229-8de1-402a-ae44-053432799d7b",
+                "category_uuid": "5446f753-7ae3-4e25-b150-0ded633b637d"
+              },
+              {
+                "arguments": [
+                  "servidor"
+                ],
+                "type": "has_any_word",
+                "uuid": "1f8a76dd-cfa8-4567-892c-fbec77c5dced",
+                "category_uuid": "ad56afc0-70ac-4e24-b705-ae405fadb84f"
+              },
+              {
+                "arguments": [
+                  "SAIR"
+                ],
+                "type": "has_any_word",
+                "uuid": "68820451-cda0-42d7-a4f1-9d00b7b09c92",
+                "category_uuid": "bdd62f20-67ff-46b0-8ec6-8d1c4b2ba6ff"
+              },
+              {
+                "arguments": [
+                  "sair"
+                ],
+                "type": "has_any_word",
+                "uuid": "998ed0fd-ca83-4bc5-9610-b55c03227744",
+                "category_uuid": "bdd62f20-67ff-46b0-8ec6-8d1c4b2ba6ff"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "64b1e930-29b8-408a-886f-1604b8e81281",
+                "name": "Discord",
+                "exit_uuid": "48569946-5e4f-42cd-b8af-8a8193432131"
+              },
+              {
+                "uuid": "ffed1b0a-72d2-4169-8d25-a67d30a61ff6",
+                "name": "Duvidas",
+                "exit_uuid": "b189cad8-6647-4a5e-8669-d80c4e3703bf"
+              },
+              {
+                "uuid": "5446f753-7ae3-4e25-b150-0ded633b637d",
+                "name": "Cargo",
+                "exit_uuid": "37e637f2-b3e9-4876-8697-d1e99ef14bbf"
+              },
+              {
+                "uuid": "ad56afc0-70ac-4e24-b705-ae405fadb84f",
+                "name": "Servidor",
+                "exit_uuid": "bea01dc4-3895-4666-8deb-791f6549cd3a"
+              },
+              {
+                "uuid": "bdd62f20-67ff-46b0-8ec6-8d1c4b2ba6ff",
+                "name": "Sair",
+                "exit_uuid": "d35b07f5-569c-4d6c-9399-a00810f6958f"
+              },
+              {
+                "uuid": "9c615df1-6771-4821-bd6f-ec29792978b8",
+                "name": "Other",
+                "exit_uuid": "a9ef95b9-06d5-412b-b835-4e4791f91599"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Discord"
+          },
+          "exits": [
+            {
+              "uuid": "48569946-5e4f-42cd-b8af-8a8193432131",
+              "destination_uuid": "54a49189-db4e-4729-8867-be5d4ed43258"
+            },
+            {
+              "uuid": "b189cad8-6647-4a5e-8669-d80c4e3703bf",
+              "destination_uuid": "54a49189-db4e-4729-8867-be5d4ed43258"
+            },
+            {
+              "uuid": "37e637f2-b3e9-4876-8697-d1e99ef14bbf",
+              "destination_uuid": "54a49189-db4e-4729-8867-be5d4ed43258"
+            },
+            {
+              "uuid": "bea01dc4-3895-4666-8deb-791f6549cd3a",
+              "destination_uuid": "54a49189-db4e-4729-8867-be5d4ed43258"
+            },
+            {
+              "uuid": "d35b07f5-569c-4d6c-9399-a00810f6958f",
+              "destination_uuid": "d82c66ee-1d9f-4e65-9729-37d4968bf69a"
+            },
+            {
+              "uuid": "a9ef95b9-06d5-412b-b835-4e4791f91599",
+              "destination_uuid": "7c6809ab-0117-4cb6-96b4-4e3829cac268"
+            }
+          ]
+        },
+        {
+          "uuid": "d82c66ee-1d9f-4e65-9729-37d4968bf69a",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Conversa finalizada!!! para voltar a falar com a gente \u00e9 s\u00f3 mandar um oi\n",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "b3b784ff-753a-42c8-8bc3-ac7ba5d286fe"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "5dc4aea1-9c8a-4973-a274-a0f19c9f3fdc",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "7c6809ab-0117-4cb6-96b4-4e3829cac268",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "@contact n\u00e3o consegui entender, voc\u00ea est\u00e1 com duvida sobre o discord ou \u00e9 outra coisa ?",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "2a3c6fe8-9f1f-4a54-afa2-9db814a5ebbb"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "295a71a5-9cc0-4a2d-a6e4-b14a3302af1d",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "54a49189-db4e-4729-8867-be5d4ed43258",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Veja essa Playlist que vai te ensinar a entrar no servidor do discord do 1mio\nhttps://playlistyoutube\n",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "40245e01-0a9c-4d77-a0d7-9db3712b17f4"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "2ab13e95-b889-4dab-a211-37625733ce27",
+              "destination_uuid": "cea30610-1806-4d2d-a907-bbdc6480ac07"
+            }
+          ]
+        },
+        {
+          "uuid": "c52a51a1-6bbf-49e4-8be5-951d286de3e1",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Ops, n\u00e3o entendi muito bem, voce ainda t\u00e1 com duvidas sobre o discord ou o 1mio ?",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "e10d343d-f8c2-4e6c-b8ff-8fa4b5664aec"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "07c638e4-2634-4f9f-8ec7-5540c2042f97",
+              "destination_uuid": "05a84fb5-d898-4a6f-9bad-b28b7e113a51"
+            }
+          ]
+        },
+        {
+          "uuid": "cea30610-1806-4d2d-a907-bbdc6480ac07",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "86fc24eb-f977-477c-8788-60b9812324db",
+            "cases": [
+              {
+                "arguments": [
+                  "Obrigado"
+                ],
+                "type": "has_any_word",
+                "uuid": "d3fdff77-48e1-40f0-bd6a-9220caf35f5a",
+                "category_uuid": "4c865e5b-60de-4c6e-af66-e377b9eb9831"
+              },
+              {
+                "arguments": [
+                  "valeu"
+                ],
+                "type": "has_any_word",
+                "uuid": "2fb94239-6a9b-4f68-a0c4-d767551ee7f5",
+                "category_uuid": "81786a67-1537-4afb-b16b-798ef25aca78"
+              },
+              {
+                "arguments": [
+                  "brigado"
+                ],
+                "type": "has_any_word",
+                "uuid": "76f36473-e188-4801-be8a-9d27023d13c5",
+                "category_uuid": "564d954e-fb9d-41fc-aa85-23758301a94a"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "4c865e5b-60de-4c6e-af66-e377b9eb9831",
+                "name": "Obrigado",
+                "exit_uuid": "0984899e-9756-4cc5-a741-ae75cf551728"
+              },
+              {
+                "uuid": "81786a67-1537-4afb-b16b-798ef25aca78",
+                "name": "Valeu",
+                "exit_uuid": "285dadea-73b5-4079-acfa-d54976d335c3"
+              },
+              {
+                "uuid": "564d954e-fb9d-41fc-aa85-23758301a94a",
+                "name": "Brigado",
+                "exit_uuid": "ba6d61ac-973c-4b72-8a72-b3aa15fff078"
+              },
+              {
+                "uuid": "86fc24eb-f977-477c-8788-60b9812324db",
+                "name": "Other",
+                "exit_uuid": "2475624f-6bb1-4f31-b4bd-1759cadc94af"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Result 2"
+          },
+          "exits": [
+            {
+              "uuid": "0984899e-9756-4cc5-a741-ae75cf551728",
+              "destination_uuid": "98c37c3d-2083-4c09-8e52-29abcd0fa779"
+            },
+            {
+              "uuid": "285dadea-73b5-4079-acfa-d54976d335c3",
+              "destination_uuid": "98c37c3d-2083-4c09-8e52-29abcd0fa779"
+            },
+            {
+              "uuid": "ba6d61ac-973c-4b72-8a72-b3aa15fff078",
+              "destination_uuid": "98c37c3d-2083-4c09-8e52-29abcd0fa779"
+            },
+            {
+              "uuid": "2475624f-6bb1-4f31-b4bd-1759cadc94af",
+              "destination_uuid": "c52a51a1-6bbf-49e4-8be5-951d286de3e1"
+            }
+          ]
+        },
+        {
+          "uuid": "98c37c3d-2083-4c09-8e52-29abcd0fa779",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "N\u00f3s que agradecemos e se tiver mais duvidas \u00e9 s\u00f3 me chamar aqui, beleza ?\nTmj",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "c53bafba-e29e-41ac-9967-2e218f1c4c2f"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "e0bb5ad3-02d3-46ac-b3e7-ed81dea68a3b",
+              "destination_uuid": null
+            }
+          ]
+        }
+      ],
+      "_ui": {
+        "nodes": {
+          "88f2b441-3984-4a4c-978d-6ba632048b65": {
+            "position": {
+              "left": 580,
+              "top": 0
+            },
+            "type": "execute_actions"
+          },
+          "05a84fb5-d898-4a6f-9bad-b28b7e113a51": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 80,
+              "top": 200
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "54a49189-db4e-4729-8867-be5d4ed43258": {
+            "position": {
+              "left": 120,
+              "top": 460
+            },
+            "type": "execute_actions"
+          },
+          "7c6809ab-0117-4cb6-96b4-4e3829cac268": {
+            "position": {
+              "left": 580,
+              "top": 420
+            },
+            "type": "execute_actions"
+          },
+          "cea30610-1806-4d2d-a907-bbdc6480ac07": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 120,
+              "top": 680
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "98c37c3d-2083-4c09-8e52-29abcd0fa779": {
+            "position": {
+              "left": 380,
+              "top": 940
+            },
+            "type": "execute_actions"
+          },
+          "c52a51a1-6bbf-49e4-8be5-951d286de3e1": {
+            "position": {
+              "left": 680,
+              "top": 580
+            },
+            "type": "execute_actions"
+          },
+          "d82c66ee-1d9f-4e65-9729-37d4968bf69a": {
+            "position": {
+              "left": 860,
+              "top": 240
+            },
+            "type": "execute_actions"
+          }
+        }
+      },
+      "revision": 42,
+      "expire_after_minutes": 10080,
+      "metadata": {
+        "expires": 10080
+      },
+      "localization": {}
+    }
+  ],
+  "campaigns": [],
+  "triggers": [
+    {
+      "trigger_type": "K",
+      "keyword": "ol\u00e1",
+      "flow": {
+        "uuid": "dd938cb3-c1dd-4c28-9c6b-7acfba2d6bb2",
+        "name": "Chegada voluntario"
+      },
+      "groups": [],
+      "channel": null
+    },
+    {
+      "trigger_type": "K",
+      "keyword": "oie",
+      "flow": {
+        "uuid": "dd938cb3-c1dd-4c28-9c6b-7acfba2d6bb2",
+        "name": "Chegada voluntario"
+      },
+      "groups": [],
+      "channel": null
+    },
+    {
+      "trigger_type": "K",
+      "keyword": "oi",
+      "flow": {
+        "uuid": "dd938cb3-c1dd-4c28-9c6b-7acfba2d6bb2",
+        "name": "Chegada voluntario"
+      },
+      "groups": [],
+      "channel": null
+    }
+  ],
+  "fields": [],
+  "groups": []
+}
