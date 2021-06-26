@@ -3,388 +3,1131 @@
   "site": "https://rapidpro.ilhasoft.mobi",
   "flows": [
     {
-      "name": "Chegada voluntario",
-      "uuid": "dd938cb3-c1dd-4c28-9c6b-7acfba2d6bb2",
+      "name": "arrival_volunteer",
+      "uuid": "16348b29-91ab-4103-8a02-4c3d5a5e5582",
       "spec_version": "13.1.0",
       "language": "base",
       "type": "messaging",
       "nodes": [
         {
-          "uuid": "88f2b441-3984-4a4c-978d-6ba632048b65",
-          "actions": [
-            {
-              "attachments": [],
-              "text": "Oi @contact.name    que bom que quer fazer parte da comunidade do 1MiO!!! \nPara parar de falar comigo \u00e9 s\u00f3 digitar SAIR\ncomo posso ajudar voc\u00ea ?\n",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "a401a4e9-7633-46f8-a0de-1d86abac348f"
-            }
-          ],
+          "uuid": "e08490b0-b361-4d21-8353-222a1279a733",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "a9157c68-224d-49fa-87a0-19aa18ee105f",
+            "cases": [
+              {
+                "arguments": [
+                  "Oi"
+                ],
+                "type": "has_any_word",
+                "uuid": "4d2b5644-78a1-479f-9482-c806d22445b3",
+                "category_uuid": "1238ab70-43ef-4173-81f9-5ded297a21ac"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "1238ab70-43ef-4173-81f9-5ded297a21ac",
+                "name": "Oi",
+                "exit_uuid": "52988fee-9d20-439c-b8d2-c9a2b525105e"
+              },
+              {
+                "uuid": "a9157c68-224d-49fa-87a0-19aa18ee105f",
+                "name": "Other",
+                "exit_uuid": "0e8894f0-6459-447b-99bd-0b068962b581"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Result"
+          },
           "exits": [
             {
-              "uuid": "2ad65981-40dc-415b-8e18-831ab8f3dd18",
-              "destination_uuid": "05a84fb5-d898-4a6f-9bad-b28b7e113a51"
+              "uuid": "52988fee-9d20-439c-b8d2-c9a2b525105e",
+              "destination_uuid": "24c6a6bc-43f7-41cd-9175-6ecac0b77adf"
+            },
+            {
+              "uuid": "0e8894f0-6459-447b-99bd-0b068962b581",
+              "destination_uuid": "24c6a6bc-43f7-41cd-9175-6ecac0b77adf"
             }
           ]
         },
         {
-          "uuid": "05a84fb5-d898-4a6f-9bad-b28b7e113a51",
+          "uuid": "622eb6ba-7e75-4cf4-ad38-f03756fb0e92",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Voc\u00ea informou que n\u00e3o quer mais falar com a gente \ud83d\udc40, caso queira retomar o atendimento \u00c9 s\u00f3 mandar um Oi.\nAgora caso \u00e9 s\u00f3 isso mesmo, n\u00e3o esque\u00e7a de avaliar nosso atendimento no link abaixo\ud83d\udc47. Obrigadx\u2764\nhttps://www.formsatisfacao.com.br\n",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "68bf8975-6370-4897-b8bb-b61e44c5eea7"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "b683ac4b-89e8-43d4-80b2-83ec3d9c2332",
+              "destination_uuid": "9770c173-d71b-4c89-9ac8-bf69277a2f48"
+            }
+          ]
+        },
+        {
+          "uuid": "24c6a6bc-43f7-41cd-9175-6ecac0b77adf",
+          "actions": [
+            {
+              "type": "add_contact_groups",
+              "groups": [
+                {
+                  "uuid": "4a196ffb-1912-4d28-8115-77db5e326f21",
+                  "name": "initial_user",
+                  "query": null,
+                  "status": "ready",
+                  "count": 1
+                }
+              ],
+              "uuid": "b9c1c379-cc42-4ff0-ba2c-43f6b469d3f3"
+            },
+            {
+              "attachments": [],
+              "text": "Oie \ud83d\ude01, eu sou Assistente Virtual do 1MiO sobre o Discord, que bom que voc\u00ea chegou\u2764\ufe0f\nVoc\u00ea j\u00e1 conhece o 1MiO ?",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "9a9572ce-2d96-4ae9-a9e3-c3f1114f2ae2"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "afa3a79b-3b9c-4a80-b5dc-71ec748ad1d4",
+              "destination_uuid": "77538e07-4571-425f-a257-dcf829047fd2"
+            }
+          ]
+        },
+        {
+          "uuid": "54be6064-57c7-4476-a9d6-07fad917951a",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "\ud83e\udd14Ops! N\u00e3o entendi muito bem.\nDigite\ud83d\udc49 SIM ou N\u00c3O\n",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "26aae6a6-f534-4221-a6bb-57479b0bf746"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "c68629cc-a2a5-419a-9c6c-15235f49ed14",
+              "destination_uuid": "77538e07-4571-425f-a257-dcf829047fd2"
+            }
+          ]
+        },
+        {
+          "uuid": "77538e07-4571-425f-a257-dcf829047fd2",
           "actions": [],
           "router": {
             "type": "switch",
-            "default_category_uuid": "9c615df1-6771-4821-bd6f-ec29792978b8",
+            "default_category_uuid": "a23a5929-9f7e-4cae-bea6-efa27ecb041a",
             "cases": [
               {
                 "arguments": [
-                  "discord"
+                  "S"
                 ],
-                "type": "has_any_word",
-                "uuid": "bb7f267e-e12e-4718-adfc-d51cc7ec4b08",
-                "category_uuid": "64b1e930-29b8-408a-886f-1604b8e81281"
+                "type": "has_beginning",
+                "uuid": "fe8b2180-efa6-46c1-95bc-9257ce8d7a27",
+                "category_uuid": "7d035ada-9108-4303-a156-0b269c0d1be5"
               },
               {
                 "arguments": [
-                  "duvidas"
+                  "C"
                 ],
-                "type": "has_any_word",
-                "uuid": "927d3b3a-509e-4ee2-9d02-b1d1b1ca156a",
-                "category_uuid": "ffed1b0a-72d2-4169-8d25-a67d30a61ff6"
+                "type": "has_beginning",
+                "uuid": "25a11256-79e4-43a6-a63e-21f08a769dae",
+                "category_uuid": "c9dd1627-57ce-4af3-8e0e-f1c2cc67f115"
               },
               {
                 "arguments": [
-                  "cargo"
+                  "s"
                 ],
-                "type": "has_any_word",
-                "uuid": "7e19a229-8de1-402a-ae44-053432799d7b",
-                "category_uuid": "5446f753-7ae3-4e25-b150-0ded633b637d"
+                "type": "has_beginning",
+                "uuid": "2c7bdfa6-fda7-4cb7-8ea1-d133c1644b2d",
+                "category_uuid": "7d035ada-9108-4303-a156-0b269c0d1be5"
               },
               {
                 "arguments": [
-                  "servidor"
+                  "c"
+                ],
+                "type": "has_beginning",
+                "uuid": "be4f154f-c37a-4c0d-be1b-8f81baff18cf",
+                "category_uuid": "c9dd1627-57ce-4af3-8e0e-f1c2cc67f115"
+              },
+              {
+                "arguments": [
+                  "N"
                 ],
                 "type": "has_any_word",
-                "uuid": "1f8a76dd-cfa8-4567-892c-fbec77c5dced",
-                "category_uuid": "ad56afc0-70ac-4e24-b705-ae405fadb84f"
+                "uuid": "c14d52f5-6615-4f7f-bf68-443bab48c6c0",
+                "category_uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0"
               },
+              {
+                "arguments": [
+                  "n"
+                ],
+                "type": "has_any_word",
+                "uuid": "2693dafc-f0d1-4023-9a93-71ae1ec81887",
+                "category_uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0"
+              },
+              {
+                "arguments": [
+                  "N\u00e3o"
+                ],
+                "type": "has_any_word",
+                "uuid": "336e0b38-d29d-4d70-8d09-ed079676bb40",
+                "category_uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0"
+              },
+              {
+                "arguments": [
+                  "N\u00c3O"
+                ],
+                "type": "has_any_word",
+                "uuid": "978e5227-42d6-4e3e-86fc-f958ddbb14e7",
+                "category_uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0"
+              },
+              {
+                "arguments": [
+                  "n\u00e3o"
+                ],
+                "type": "has_any_word",
+                "uuid": "e3d20e90-c6e2-4b31-bdf5-2eb906d0b778",
+                "category_uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0"
+              },
+              {
+                "arguments": [
+                  "Nao"
+                ],
+                "type": "has_any_word",
+                "uuid": "dcdd85c2-4415-435b-a60e-c851d238c52b",
+                "category_uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0"
+              },
+              {
+                "arguments": [
+                  "nao"
+                ],
+                "type": "has_any_word",
+                "uuid": "4ab86b1a-d526-48c3-a793-a4510ee45dbb",
+                "category_uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0"
+              },
+              {
+                "arguments": [
+                  "Sim"
+                ],
+                "type": "has_any_word",
+                "uuid": "a96e8eef-23c2-4680-b040-7f75a535b794",
+                "category_uuid": "7d035ada-9108-4303-a156-0b269c0d1be5"
+              },
+              {
+                "arguments": [
+                  "sim"
+                ],
+                "type": "has_any_word",
+                "uuid": "5766fdb8-3b8c-48bd-aaa4-1344e86f534a",
+                "category_uuid": "7d035ada-9108-4303-a156-0b269c0d1be5"
+              },
+              {
+                "arguments": [
+                  "SIM"
+                ],
+                "type": "has_any_word",
+                "uuid": "ed7108bb-3d40-484a-994f-46b87d7d4c40",
+                "category_uuid": "7d035ada-9108-4303-a156-0b269c0d1be5"
+              },
+              {
+                "arguments": [
+                  "Conhe\u00e7o"
+                ],
+                "type": "has_any_word",
+                "uuid": "694b40ef-a6a2-468f-acc5-904a4748aefa",
+                "category_uuid": "c9dd1627-57ce-4af3-8e0e-f1c2cc67f115"
+              },
+              {
+                "arguments": [
+                  "Conheco"
+                ],
+                "type": "has_any_word",
+                "uuid": "5911135f-7803-44e1-8043-e71545fa8a91",
+                "category_uuid": "c9dd1627-57ce-4af3-8e0e-f1c2cc67f115"
+              },
+              {
+                "arguments": [
+                  "N\u00e3o Conhe\u00e7o"
+                ],
+                "type": "has_any_word",
+                "uuid": "c97eafb7-e098-4cc5-a994-27cc7e364d45",
+                "category_uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0"
+              },
+              {
+                "arguments": [
+                  "Nao Conheco"
+                ],
+                "type": "has_any_word",
+                "uuid": "8f490044-00a5-4ff3-9be2-58d74bb3cb7e",
+                "category_uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "7d035ada-9108-4303-a156-0b269c0d1be5",
+                "name": "S",
+                "exit_uuid": "38fcffc5-b05b-4c04-be73-02c193a20918"
+              },
+              {
+                "uuid": "c9dd1627-57ce-4af3-8e0e-f1c2cc67f115",
+                "name": "C",
+                "exit_uuid": "d9e97cd4-5e0e-4299-96ed-04f80e774370"
+              },
+              {
+                "uuid": "360482ba-1bd9-4701-a320-83f0c9d09da0",
+                "name": "N",
+                "exit_uuid": "284eed32-e757-443b-a5e0-b26f31abe759"
+              },
+              {
+                "uuid": "a23a5929-9f7e-4cae-bea6-efa27ecb041a",
+                "name": "Other",
+                "exit_uuid": "2248863b-00c0-45b1-b451-4ec10df5e71d"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "INICIO"
+          },
+          "exits": [
+            {
+              "uuid": "38fcffc5-b05b-4c04-be73-02c193a20918",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            },
+            {
+              "uuid": "d9e97cd4-5e0e-4299-96ed-04f80e774370",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            },
+            {
+              "uuid": "284eed32-e757-443b-a5e0-b26f31abe759",
+              "destination_uuid": "eac18181-0d03-4775-882b-8ba84c1eafac"
+            },
+            {
+              "uuid": "2248863b-00c0-45b1-b451-4ec10df5e71d",
+              "destination_uuid": "54be6064-57c7-4476-a9d6-07fad917951a"
+            }
+          ]
+        },
+        {
+          "uuid": "9770c173-d71b-4c89-9ac8-bf69277a2f48",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "a59171d5-ff80-4884-922c-5578da2dcebd",
+            "cases": [
+              {
+                "arguments": [
+                  "Oi"
+                ],
+                "type": "has_any_word",
+                "uuid": "322fd7c7-3408-4929-acd5-b4f63aa80f94",
+                "category_uuid": "96d6b943-6d15-4544-995b-99d1e56085d7"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "96d6b943-6d15-4544-995b-99d1e56085d7",
+                "name": "Oi",
+                "exit_uuid": "e13b4e69-50cb-4098-8d8b-2eab48b0dfcf"
+              },
+              {
+                "uuid": "a59171d5-ff80-4884-922c-5578da2dcebd",
+                "name": "Other",
+                "exit_uuid": "52371bca-8a2b-41aa-b9eb-1e8fdaa771bd"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Result 4"
+          },
+          "exits": [
+            {
+              "uuid": "e13b4e69-50cb-4098-8d8b-2eab48b0dfcf",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            },
+            {
+              "uuid": "52371bca-8a2b-41aa-b9eb-1e8fdaa771bd",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            }
+          ]
+        },
+        {
+          "uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Oie\ud83d\udc4b, que bom que voc\u00ea quer saber mais sobre o 1MiO.\nEscolha uma das op\u00e7\u00f5es para continuar(Digite apenas o numero da op\u00e7\u00e3o, beleza \ud83d\ude01)\n\n1\ufe0f\u20e3 - O que \u00e9 o 1MiO \u2753\n2\ufe0f\u20e3 - Como fazer parte da comunidade do 1MiO\u2753\n3\ufe0f\u20e3 - Duvidas sobre o Discord \u2753\n4\ufe0f\u20e3 - Como ativar meu cargo de voluntario do 1MiO no Discord\u2753\n5\ufe0f\u20e3- Cancelar atendimento.",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "f19b0393-1fc8-472a-b855-5507103847bf"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "594f6730-07cf-4959-8165-0a29db3f9c6f",
+              "destination_uuid": "d72f0146-8d5b-4131-9163-4ebf1314c5f6"
+            }
+          ]
+        },
+        {
+          "uuid": "d72f0146-8d5b-4131-9163-4ebf1314c5f6",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "bd12ec95-c777-4c99-a117-fbaf48ab687f",
+            "cases": [
+              {
+                "arguments": [
+                  "1"
+                ],
+                "type": "has_any_word",
+                "uuid": "24f6d499-ed37-476b-b8f1-099815603c81",
+                "category_uuid": "9a232861-9e66-4a46-8265-14648b53c203"
+              },
+              {
+                "arguments": [
+                  "2"
+                ],
+                "type": "has_any_word",
+                "uuid": "56731fac-0f72-45cc-8f43-8c0918e21652",
+                "category_uuid": "d06bb6b0-f9a7-4981-b553-683640f53276"
+              },
+              {
+                "arguments": [
+                  "3"
+                ],
+                "type": "has_any_word",
+                "uuid": "8da4bb94-f2c4-4f97-800c-2e161d4f39e7",
+                "category_uuid": "779bf92f-973f-409d-b754-bc3b4797bd0a"
+              },
+              {
+                "arguments": [
+                  "4"
+                ],
+                "type": "has_any_word",
+                "uuid": "44e4ef8a-8000-4d54-8cfa-08c6ec6c1969",
+                "category_uuid": "9b77b4f8-bb6e-49d1-b332-88d73798c666"
+              },
+              {
+                "arguments": [
+                  "5"
+                ],
+                "type": "has_any_word",
+                "uuid": "b9b38413-d1f8-4ed9-805e-3c05cdc8907f",
+                "category_uuid": "d92c15d2-065c-4af6-9081-ca66bf652923"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "9a232861-9e66-4a46-8265-14648b53c203",
+                "name": "1",
+                "exit_uuid": "ca117017-963c-42b2-886d-4be14e9c81ce"
+              },
+              {
+                "uuid": "d06bb6b0-f9a7-4981-b553-683640f53276",
+                "name": "2",
+                "exit_uuid": "9f487f78-9629-47f0-85b8-02878359890c"
+              },
+              {
+                "uuid": "779bf92f-973f-409d-b754-bc3b4797bd0a",
+                "name": "3",
+                "exit_uuid": "198c25a7-4126-4bb7-8d62-d266e6d3ddd1"
+              },
+              {
+                "uuid": "9b77b4f8-bb6e-49d1-b332-88d73798c666",
+                "name": "4",
+                "exit_uuid": "84645b55-ebf9-42e4-a528-9657279ffe01"
+              },
+              {
+                "uuid": "d92c15d2-065c-4af6-9081-ca66bf652923",
+                "name": "5",
+                "exit_uuid": "8538b6a5-43bd-4ff4-ab83-f023f807c467"
+              },
+              {
+                "uuid": "bd12ec95-c777-4c99-a117-fbaf48ab687f",
+                "name": "Other",
+                "exit_uuid": "1c5a7c65-8030-4b46-84d2-1eca97b21c31"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Result 1"
+          },
+          "exits": [
+            {
+              "uuid": "ca117017-963c-42b2-886d-4be14e9c81ce",
+              "destination_uuid": "eac18181-0d03-4775-882b-8ba84c1eafac"
+            },
+            {
+              "uuid": "9f487f78-9629-47f0-85b8-02878359890c",
+              "destination_uuid": "e0b7cea1-777a-479a-b8ac-26ae6a9bc790"
+            },
+            {
+              "uuid": "198c25a7-4126-4bb7-8d62-d266e6d3ddd1",
+              "destination_uuid": "e604454a-3c44-4f93-bb7f-07de861a0f78"
+            },
+            {
+              "uuid": "84645b55-ebf9-42e4-a528-9657279ffe01",
+              "destination_uuid": "ce8ffb53-d93d-4020-8b54-4e70e9304a92"
+            },
+            {
+              "uuid": "8538b6a5-43bd-4ff4-ab83-f023f807c467",
+              "destination_uuid": "622eb6ba-7e75-4cf4-ad38-f03756fb0e92"
+            },
+            {
+              "uuid": "1c5a7c65-8030-4b46-84d2-1eca97b21c31",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            }
+          ]
+        },
+        {
+          "uuid": "ce8ffb53-d93d-4020-8b54-4e70e9304a92",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Oie \ud83d\ude01, para ativar seu cargo de volunteer 1MiO voc\u00ea precisa estar dentro do servidor do 1MiO e ir no canal #Sala-de-Comandos e digitar o comando *!tmj-65418687* (N\u00e3o esquece da exclama\u00e7\u00e3o no inicio)\nPara entender melhor pode assistir esse video aqui \ud83d\udc47. \n\nComo ativar o cargo de Volunteer do 1MiO pelo computador\ud83d\udcbb\ud83d\udc47\nhttp://bit.ly/como-ativar-cargo-de-volunteer-1mio-no-discord-pelo-computador\n\nComo ativar o cargo de Volunteer do 1MiO pelo Celular \ud83d\udcf2\ud83d\udc47\nhttp://bit.ly/como-ativar-cargo-de-volunteer-1mio-no-discord-pelo-celular",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "366c3092-723d-4853-a63c-4ea54241f5db"
+            },
+            {
+              "attachments": [],
+              "text": "E depois para continuar falando com a gente digite o numero \ud83d\udc49  9\ufe0f\u20e3",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "c04809eb-6f59-44de-8a5d-97c621859306"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "c7f36298-d941-4230-b810-0cccf9061a24",
+              "destination_uuid": "2a5e3969-1b44-44f2-a8e4-81f3bf12513b"
+            }
+          ]
+        },
+        {
+          "uuid": "eac18181-0d03-4775-882b-8ba84c1eafac",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Que legal que quer conhecer 1MiO!!!\ud83d\ude0e\ud83d\ude01\n\n1MiO: 1 milh\u00e3o de oportunidades para transformar uma gera\u00e7\u00e3o. Somos a maior articula\u00e7\u00e3o pela juventude do Brasil para gerar oportunidade de forma\u00e7\u00e3o e fornecer trabalho decente aos jovens e aos mais vulner\u00e1veis.\nConhe\u00e7a mais nesse link \ud83d\udc49 http://bit.ly/explicacao-1mio\n",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "07e30755-cc32-4943-8365-558070321748"
+            },
+            {
+              "attachments": [],
+              "text": "Ap\u00f3s ver o v\u00eddeo, para saber mais sobre a comunidade 1MiO,  digite o numero \ud83d\udc49 9\ufe0f\u20e3 ",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "ab914e3d-6094-4ef8-86a4-10f7b7e08f33"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "44cd798b-1900-45b2-ba36-28087b451b21",
+              "destination_uuid": "423d4b13-8819-41a7-a7b1-a082bfa05a04"
+            }
+          ]
+        },
+        {
+          "uuid": "e0b7cea1-777a-479a-b8ac-26ae6a9bc790",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "\ud83d\ude01Que legal que voc\u00ea quer fazer parte do 1MiO, \u00e9 uma honra ter voc\u00ea com a gente\ud83e\udd70.\n\nPreparamos essa playlist no youtube, que vai te ensinar certinho como voc\u00ea entra na comunidade 1MiO.\nClica no link \ud83d\udc49http://bit.ly/playlist-primeiros-passos-discord-servidor-1mio\n\n\u2753Assim que terminar de assistir se tiver alguma duvida \u00e9 s\u00f3 digitar 3\ufe0f\u20e3",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "e27fae00-fefa-4f95-b296-2d3bed215118"
+            },
+            {
+              "attachments": [],
+              "text": "\u26a0\ufe0f E para voltar ao MENU \u00e9 s\u00f3 digitar o numero \ud83d\udc49 9\ufe0f\u20e3",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "f4edbabb-5189-4804-9835-9c72f8d60778"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "e08a46f9-14bb-4877-a164-c3dcb6cd4306",
+              "destination_uuid": "4d718f85-1b65-4704-994a-acbfb0ae247e"
+            }
+          ]
+        },
+        {
+          "uuid": "e604454a-3c44-4f93-bb7f-07de861a0f78",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "\u2753Qual \u00e9 sua duvida abaixo sobre o Discord\ud83d\udc47. Digite apenas o numero referente a Duvida.\n\n1\ufe0f\u20e3 - Como criar uma conta no Discord\u2753\n2\ufe0f\u20e3 - Baixar nosso e-book de primeiros passos para discord.\n3\ufe0f\u20e3 - Como participar da mentorias no canal stage `Voz da Experi\u00eancia`\u2753\n9\ufe0f\u20e3 - Voltar ao MENU inicial \u26a0\ufe0f\nOu digite **SAIR** para finalizar o atendimento.",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "9c9704d8-affb-4427-aecc-381fc4f4abcd"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "63e4f803-9cbc-4785-a948-8daed68e2537",
+              "destination_uuid": "6b728925-efd4-456d-af19-205660c8f5d8"
+            }
+          ]
+        },
+        {
+          "uuid": "4d718f85-1b65-4704-994a-acbfb0ae247e",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "bd43805a-09eb-4a3f-8155-ff6473e13885",
+            "cases": [
+              {
+                "arguments": [
+                  "3"
+                ],
+                "type": "has_any_word",
+                "uuid": "81802194-9bc0-46e2-94b3-37bfff349943",
+                "category_uuid": "28fb255d-b9ff-46ef-a799-f4af581c70cb"
+              },
+              {
+                "arguments": [
+                  "9"
+                ],
+                "type": "has_any_word",
+                "uuid": "b94bf823-0df8-4f6d-845d-019febb30e11",
+                "category_uuid": "050b0041-59da-468e-aacb-b0a1c1f5df46"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "28fb255d-b9ff-46ef-a799-f4af581c70cb",
+                "name": "3",
+                "exit_uuid": "e6ad91fc-fd65-4cd3-97e9-e6ca12290315"
+              },
+              {
+                "uuid": "050b0041-59da-468e-aacb-b0a1c1f5df46",
+                "name": "9",
+                "exit_uuid": "0f943b42-f327-4441-9ec5-28fae136dddc"
+              },
+              {
+                "uuid": "bd43805a-09eb-4a3f-8155-ff6473e13885",
+                "name": "Other",
+                "exit_uuid": "d692072b-5ec8-4e94-bad3-f2cbb0a5aa18"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Result 3"
+          },
+          "exits": [
+            {
+              "uuid": "e6ad91fc-fd65-4cd3-97e9-e6ca12290315",
+              "destination_uuid": "e604454a-3c44-4f93-bb7f-07de861a0f78"
+            },
+            {
+              "uuid": "0f943b42-f327-4441-9ec5-28fae136dddc",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            },
+            {
+              "uuid": "d692072b-5ec8-4e94-bad3-f2cbb0a5aa18",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            }
+          ]
+        },
+        {
+          "uuid": "423d4b13-8819-41a7-a7b1-a082bfa05a04",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "507121fa-6fad-4629-b492-a3889f4a3b35",
+            "cases": [
+              {
+                "arguments": [
+                  "9"
+                ],
+                "type": "has_any_word",
+                "uuid": "f768dff9-3843-489f-8d25-70eb5d390b02",
+                "category_uuid": "a3092aed-5084-4f46-882c-430f280ad5ab"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "a3092aed-5084-4f46-882c-430f280ad5ab",
+                "name": "9",
+                "exit_uuid": "78e922a0-2d5c-4487-810a-7cbce334aa76"
+              },
+              {
+                "uuid": "507121fa-6fad-4629-b492-a3889f4a3b35",
+                "name": "Other",
+                "exit_uuid": "69c829d9-77d6-4a3e-8d83-b9356ca38a54"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Voltar ao MENU"
+          },
+          "exits": [
+            {
+              "uuid": "78e922a0-2d5c-4487-810a-7cbce334aa76",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            },
+            {
+              "uuid": "69c829d9-77d6-4a3e-8d83-b9356ca38a54",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            }
+          ]
+        },
+        {
+          "uuid": "2a5e3969-1b44-44f2-a8e4-81f3bf12513b",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "eb932a5e-6ab7-4511-bc4f-ae04c62e89da",
+            "cases": [],
+            "categories": [
+              {
+                "uuid": "eb932a5e-6ab7-4511-bc4f-ae04c62e89da",
+                "name": "All Responses",
+                "exit_uuid": "a69e98a4-f42a-46a9-897d-488fcafd986b"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "Result 7"
+          },
+          "exits": [
+            {
+              "uuid": "a69e98a4-f42a-46a9-897d-488fcafd986b",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
+            }
+          ]
+        },
+        {
+          "uuid": "6b728925-efd4-456d-af19-205660c8f5d8",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "ccb6cc93-fe08-498f-9cdf-322a2135bf7e",
+            "cases": [
               {
                 "arguments": [
                   "SAIR"
                 ],
                 "type": "has_any_word",
-                "uuid": "68820451-cda0-42d7-a4f1-9d00b7b09c92",
-                "category_uuid": "bdd62f20-67ff-46b0-8ec6-8d1c4b2ba6ff"
+                "uuid": "17512ed5-594f-458b-8793-2c6031313292",
+                "category_uuid": "54bda848-4999-439d-a97f-ee32b95e7491"
+              },
+              {
+                "arguments": [
+                  "9"
+                ],
+                "type": "has_any_word",
+                "uuid": "a9ccc88a-f93a-4f9b-94fb-d86a03bdb4a5",
+                "category_uuid": "1e9a7683-9c34-4ab1-af6f-40391fb97246"
               },
               {
                 "arguments": [
                   "sair"
                 ],
                 "type": "has_any_word",
-                "uuid": "998ed0fd-ca83-4bc5-9610-b55c03227744",
-                "category_uuid": "bdd62f20-67ff-46b0-8ec6-8d1c4b2ba6ff"
+                "uuid": "b6cb1289-d91c-41e9-bc17-64016b272095",
+                "category_uuid": "54bda848-4999-439d-a97f-ee32b95e7491"
+              },
+              {
+                "arguments": [
+                  "3"
+                ],
+                "type": "has_any_word",
+                "uuid": "d5adb9e1-7fac-4804-8b51-b31b2322a903",
+                "category_uuid": "15b6a2df-41bc-46ab-9c81-b37015e9de62"
+              },
+              {
+                "arguments": [
+                  "1"
+                ],
+                "type": "has_any_word",
+                "uuid": "74bcc8c4-7d73-4c1f-bbc0-a1a041f61a2c",
+                "category_uuid": "5ec20303-cae5-4a80-8a44-d88502ffeb6f"
+              },
+              {
+                "arguments": [
+                  "2"
+                ],
+                "type": "has_any_word",
+                "uuid": "d4bbfcb3-bf7f-4234-9e74-49cd4865f115",
+                "category_uuid": "cb4157aa-7117-4f62-acab-cf708bb81266"
               }
             ],
             "categories": [
               {
-                "uuid": "64b1e930-29b8-408a-886f-1604b8e81281",
-                "name": "Discord",
-                "exit_uuid": "48569946-5e4f-42cd-b8af-8a8193432131"
-              },
-              {
-                "uuid": "ffed1b0a-72d2-4169-8d25-a67d30a61ff6",
-                "name": "Duvidas",
-                "exit_uuid": "b189cad8-6647-4a5e-8669-d80c4e3703bf"
-              },
-              {
-                "uuid": "5446f753-7ae3-4e25-b150-0ded633b637d",
-                "name": "Cargo",
-                "exit_uuid": "37e637f2-b3e9-4876-8697-d1e99ef14bbf"
-              },
-              {
-                "uuid": "ad56afc0-70ac-4e24-b705-ae405fadb84f",
-                "name": "Servidor",
-                "exit_uuid": "bea01dc4-3895-4666-8deb-791f6549cd3a"
-              },
-              {
-                "uuid": "bdd62f20-67ff-46b0-8ec6-8d1c4b2ba6ff",
+                "uuid": "54bda848-4999-439d-a97f-ee32b95e7491",
                 "name": "Sair",
-                "exit_uuid": "d35b07f5-569c-4d6c-9399-a00810f6958f"
+                "exit_uuid": "06e31ffe-6a26-47b9-b5f4-c3a1d9f5f5fe"
               },
               {
-                "uuid": "9c615df1-6771-4821-bd6f-ec29792978b8",
+                "uuid": "1e9a7683-9c34-4ab1-af6f-40391fb97246",
+                "name": "9",
+                "exit_uuid": "eb3391b7-e046-4475-8c60-ae6e4c040baa"
+              },
+              {
+                "uuid": "15b6a2df-41bc-46ab-9c81-b37015e9de62",
+                "name": "3",
+                "exit_uuid": "426032cb-f3e1-4732-aace-287ea8cc3f37"
+              },
+              {
+                "uuid": "5ec20303-cae5-4a80-8a44-d88502ffeb6f",
+                "name": "1",
+                "exit_uuid": "aca91198-6a9e-4a10-91aa-02ef19c60e60"
+              },
+              {
+                "uuid": "cb4157aa-7117-4f62-acab-cf708bb81266",
+                "name": "2",
+                "exit_uuid": "15e2ec76-83b6-4444-a133-86d945ff3abb"
+              },
+              {
+                "uuid": "ccb6cc93-fe08-498f-9cdf-322a2135bf7e",
                 "name": "Other",
-                "exit_uuid": "a9ef95b9-06d5-412b-b835-4e4791f91599"
+                "exit_uuid": "1b083c65-3340-48aa-90fb-08a6177f322f"
               }
             ],
             "operand": "@input.text",
             "wait": {
               "type": "msg"
             },
-            "result_name": "Discord"
+            "result_name": "Result 5"
           },
           "exits": [
             {
-              "uuid": "48569946-5e4f-42cd-b8af-8a8193432131",
-              "destination_uuid": "54a49189-db4e-4729-8867-be5d4ed43258"
+              "uuid": "06e31ffe-6a26-47b9-b5f4-c3a1d9f5f5fe",
+              "destination_uuid": "622eb6ba-7e75-4cf4-ad38-f03756fb0e92"
             },
             {
-              "uuid": "b189cad8-6647-4a5e-8669-d80c4e3703bf",
-              "destination_uuid": "54a49189-db4e-4729-8867-be5d4ed43258"
+              "uuid": "eb3391b7-e046-4475-8c60-ae6e4c040baa",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
             },
             {
-              "uuid": "37e637f2-b3e9-4876-8697-d1e99ef14bbf",
-              "destination_uuid": "54a49189-db4e-4729-8867-be5d4ed43258"
+              "uuid": "426032cb-f3e1-4732-aace-287ea8cc3f37",
+              "destination_uuid": "369c5085-c0b1-498c-9865-414c36b39f0b"
             },
             {
-              "uuid": "bea01dc4-3895-4666-8deb-791f6549cd3a",
-              "destination_uuid": "54a49189-db4e-4729-8867-be5d4ed43258"
+              "uuid": "aca91198-6a9e-4a10-91aa-02ef19c60e60",
+              "destination_uuid": "ea947cc4-d5ec-42ea-98b3-06bb9ee53833"
             },
             {
-              "uuid": "d35b07f5-569c-4d6c-9399-a00810f6958f",
-              "destination_uuid": "d82c66ee-1d9f-4e65-9729-37d4968bf69a"
+              "uuid": "15e2ec76-83b6-4444-a133-86d945ff3abb",
+              "destination_uuid": "a6866365-30fb-4bf6-94cf-5b9bcd2ed36e"
             },
             {
-              "uuid": "a9ef95b9-06d5-412b-b835-4e4791f91599",
-              "destination_uuid": "7c6809ab-0117-4cb6-96b4-4e3829cac268"
+              "uuid": "1b083c65-3340-48aa-90fb-08a6177f322f",
+              "destination_uuid": "b403e762-8f53-4ed7-9a10-8cfd2ea31afa"
             }
           ]
         },
         {
-          "uuid": "d82c66ee-1d9f-4e65-9729-37d4968bf69a",
+          "uuid": "ea947cc4-d5ec-42ea-98b3-06bb9ee53833",
           "actions": [
             {
               "attachments": [],
-              "text": "Conversa finalizada!!! para voltar a falar com a gente \u00e9 s\u00f3 mandar um oi\n",
+              "text": "Oie\ud83d\ude01, Veja esses tutoriais de como criar sua conta de usu\u00e1rio no Discord.\ud83d\udc47\n\nComo criar sua conta de usu\u00e1rio no Discord pelo computador\ud83d\udcbb\ud83d\udc47\nhttp://bit.ly/como-criar-conta-de-usuario-no-discord-pelo-computador\n\nComo criar sua conta de usu\u00e1rio no Discord pelo Celular \ud83d\udcf2\ud83d\udc47\nhttp://bit.ly/como-criar-conta-de-usuario-no-discord-pelo-celular",
               "type": "send_msg",
               "quick_replies": [],
-              "uuid": "b3b784ff-753a-42c8-8bc3-ac7ba5d286fe"
+              "uuid": "c5be868a-f611-40d1-8ad2-606d5c780965"
+            },
+            {
+              "attachments": [],
+              "text": "E depois para continuar falando com a gente digite o numero \ud83d\udc49  9\ufe0f\u20e3",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "169c60c7-06ac-41f9-9e23-ee0c069b2b61"
             }
           ],
           "exits": [
             {
-              "uuid": "5dc4aea1-9c8a-4973-a274-a0f19c9f3fdc",
-              "destination_uuid": null
+              "uuid": "898e5dbb-3fce-4611-8cfd-5b09f299ef29",
+              "destination_uuid": "f315bb8f-38cc-41f6-b5ff-312b01d63c5b"
             }
           ]
         },
         {
-          "uuid": "7c6809ab-0117-4cb6-96b4-4e3829cac268",
+          "uuid": "369c5085-c0b1-498c-9865-414c36b39f0b",
           "actions": [
             {
               "attachments": [],
-              "text": "@contact n\u00e3o consegui entender, voc\u00ea est\u00e1 com duvida sobre o discord ou \u00e9 outra coisa ?",
+              "text": "Oie \ud83d\ude01, est\u00e1 com duvida de como participar da mentoria no stage `Voz da Experiencia`?\nSegue os passo a passos abaixo para te ajudar\ud83d\udc47.\n\nComo participar da mentoria no stage pelo Computador\ud83d\udcbb.\nhttp://bit.ly/mentoria-pelo-computador\n\nComo participar da mentoria no stage pelo Celular\ud83d\udcf2.\nhttp://bit.ly/mentoria-pelo-celular",
               "type": "send_msg",
               "quick_replies": [],
-              "uuid": "2a3c6fe8-9f1f-4a54-afa2-9db814a5ebbb"
+              "uuid": "bf0296c4-b966-4590-ab70-6cc33bda623e"
+            },
+            {
+              "attachments": [],
+              "text": "E depois para continuar falando com a gente digite o numero \ud83d\udc49  9\ufe0f\u20e3",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "36bd5841-caa9-4d87-84b0-741fdb15546d"
             }
           ],
           "exits": [
             {
-              "uuid": "295a71a5-9cc0-4a2d-a6e4-b14a3302af1d",
-              "destination_uuid": null
+              "uuid": "137e3726-f3a8-404e-bca6-55882e368c51",
+              "destination_uuid": "f315bb8f-38cc-41f6-b5ff-312b01d63c5b"
             }
           ]
         },
         {
-          "uuid": "54a49189-db4e-4729-8867-be5d4ed43258",
+          "uuid": "a6866365-30fb-4bf6-94cf-5b9bcd2ed36e",
           "actions": [
             {
               "attachments": [],
-              "text": "Veja essa Playlist que vai te ensinar a entrar no servidor do discord do 1mio\nhttps://playlistyoutube\n",
+              "text": "Oie \ud83d\ude01, Este \u00e9 nosso e-book sobre os primeiros passos no discord, nele voc\u00ea ter\u00e1 explica\u00e7\u00f5es detalhadas sobre cada Item do Discord, desde como criar uma conta at\u00e9 conceitos mais avan\u00e7ados.\n\ud83d\udcbe Salve este PDF de primeiros passo com voc\u00ea\ud83d\udc47",
               "type": "send_msg",
               "quick_replies": [],
-              "uuid": "40245e01-0a9c-4d77-a0d7-9db3712b17f4"
+              "uuid": "77dea10c-5642-482d-97c3-10356e974120"
+            },
+            {
+              "attachments": [
+                "application/pdf:https://rapidpro-static-app.s3.us-east-1.amazonaws.com/attachments/520/21315/steps/dfe54385-c4c2-4276-be44-c25d80687902.pdf"
+              ],
+              "text": "\ud83d\udcbe",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "0730cd6c-5d5a-4779-a779-66058a394c6f"
+            },
+            {
+              "attachments": [],
+              "text": "E depois para continuar falando com a gente digite o numero \ud83d\udc49  9\ufe0f\u20e3",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "172ff9fa-a872-479e-b8b3-670b92b99e95"
             }
           ],
           "exits": [
             {
-              "uuid": "2ab13e95-b889-4dab-a211-37625733ce27",
-              "destination_uuid": "cea30610-1806-4d2d-a907-bbdc6480ac07"
+              "uuid": "7f131012-035d-4e29-8603-25a48fccb88d",
+              "destination_uuid": "f315bb8f-38cc-41f6-b5ff-312b01d63c5b"
             }
           ]
         },
         {
-          "uuid": "c52a51a1-6bbf-49e4-8be5-951d286de3e1",
-          "actions": [
-            {
-              "attachments": [],
-              "text": "Ops, n\u00e3o entendi muito bem, voce ainda t\u00e1 com duvidas sobre o discord ou o 1mio ?",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "e10d343d-f8c2-4e6c-b8ff-8fa4b5664aec"
-            }
-          ],
-          "exits": [
-            {
-              "uuid": "07c638e4-2634-4f9f-8ec7-5540c2042f97",
-              "destination_uuid": "05a84fb5-d898-4a6f-9bad-b28b7e113a51"
-            }
-          ]
-        },
-        {
-          "uuid": "cea30610-1806-4d2d-a907-bbdc6480ac07",
+          "uuid": "f315bb8f-38cc-41f6-b5ff-312b01d63c5b",
           "actions": [],
           "router": {
             "type": "switch",
-            "default_category_uuid": "86fc24eb-f977-477c-8788-60b9812324db",
-            "cases": [
-              {
-                "arguments": [
-                  "Obrigado"
-                ],
-                "type": "has_any_word",
-                "uuid": "d3fdff77-48e1-40f0-bd6a-9220caf35f5a",
-                "category_uuid": "4c865e5b-60de-4c6e-af66-e377b9eb9831"
-              },
-              {
-                "arguments": [
-                  "valeu"
-                ],
-                "type": "has_any_word",
-                "uuid": "2fb94239-6a9b-4f68-a0c4-d767551ee7f5",
-                "category_uuid": "81786a67-1537-4afb-b16b-798ef25aca78"
-              },
-              {
-                "arguments": [
-                  "brigado"
-                ],
-                "type": "has_any_word",
-                "uuid": "76f36473-e188-4801-be8a-9d27023d13c5",
-                "category_uuid": "564d954e-fb9d-41fc-aa85-23758301a94a"
-              }
-            ],
+            "default_category_uuid": "612ea5d9-2939-4b6a-bd7f-13d6d971dbbb",
+            "cases": [],
             "categories": [
               {
-                "uuid": "4c865e5b-60de-4c6e-af66-e377b9eb9831",
-                "name": "Obrigado",
-                "exit_uuid": "0984899e-9756-4cc5-a741-ae75cf551728"
-              },
-              {
-                "uuid": "81786a67-1537-4afb-b16b-798ef25aca78",
-                "name": "Valeu",
-                "exit_uuid": "285dadea-73b5-4079-acfa-d54976d335c3"
-              },
-              {
-                "uuid": "564d954e-fb9d-41fc-aa85-23758301a94a",
-                "name": "Brigado",
-                "exit_uuid": "ba6d61ac-973c-4b72-8a72-b3aa15fff078"
-              },
-              {
-                "uuid": "86fc24eb-f977-477c-8788-60b9812324db",
-                "name": "Other",
-                "exit_uuid": "2475624f-6bb1-4f31-b4bd-1759cadc94af"
+                "uuid": "612ea5d9-2939-4b6a-bd7f-13d6d971dbbb",
+                "name": "All Responses",
+                "exit_uuid": "111c82e6-165b-405e-b664-2521012e4ccf"
               }
             ],
             "operand": "@input.text",
             "wait": {
               "type": "msg"
             },
-            "result_name": "Result 2"
+            "result_name": "Result 9"
           },
           "exits": [
             {
-              "uuid": "0984899e-9756-4cc5-a741-ae75cf551728",
-              "destination_uuid": "98c37c3d-2083-4c09-8e52-29abcd0fa779"
-            },
-            {
-              "uuid": "285dadea-73b5-4079-acfa-d54976d335c3",
-              "destination_uuid": "98c37c3d-2083-4c09-8e52-29abcd0fa779"
-            },
-            {
-              "uuid": "ba6d61ac-973c-4b72-8a72-b3aa15fff078",
-              "destination_uuid": "98c37c3d-2083-4c09-8e52-29abcd0fa779"
-            },
-            {
-              "uuid": "2475624f-6bb1-4f31-b4bd-1759cadc94af",
-              "destination_uuid": "c52a51a1-6bbf-49e4-8be5-951d286de3e1"
-            }
-          ]
-        },
-        {
-          "uuid": "98c37c3d-2083-4c09-8e52-29abcd0fa779",
-          "actions": [
-            {
-              "attachments": [],
-              "text": "N\u00f3s que agradecemos e se tiver mais duvidas \u00e9 s\u00f3 me chamar aqui, beleza ?\nTmj",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "c53bafba-e29e-41ac-9967-2e218f1c4c2f"
-            }
-          ],
-          "exits": [
-            {
-              "uuid": "e0bb5ad3-02d3-46ac-b3e7-ed81dea68a3b",
-              "destination_uuid": null
+              "uuid": "111c82e6-165b-405e-b664-2521012e4ccf",
+              "destination_uuid": "e604454a-3c44-4f93-bb7f-07de861a0f78"
             }
           ]
         }
       ],
       "_ui": {
         "nodes": {
-          "88f2b441-3984-4a4c-978d-6ba632048b65": {
+          "e08490b0-b361-4d21-8353-222a1279a733": {
+            "type": "wait_for_response",
             "position": {
-              "left": 580,
+              "left": 700,
+              "top": 0
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "622eb6ba-7e75-4cf4-ad38-f03756fb0e92": {
+            "position": {
+              "left": 1380,
               "top": 0
             },
             "type": "execute_actions"
           },
-          "05a84fb5-d898-4a6f-9bad-b28b7e113a51": {
-            "type": "wait_for_response",
+          "24c6a6bc-43f7-41cd-9175-6ecac0b77adf": {
             "position": {
-              "left": 80,
-              "top": 200
-            },
-            "config": {
-              "cases": {}
-            }
-          },
-          "54a49189-db4e-4729-8867-be5d4ed43258": {
-            "position": {
-              "left": 120,
-              "top": 460
+              "left": 700,
+              "top": 140
             },
             "type": "execute_actions"
           },
-          "7c6809ab-0117-4cb6-96b4-4e3829cac268": {
+          "54be6064-57c7-4476-a9d6-07fad917951a": {
             "position": {
-              "left": 580,
+              "left": 280,
+              "top": 380
+            },
+            "type": "execute_actions"
+          },
+          "77538e07-4571-425f-a257-dcf829047fd2": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 700,
               "top": 420
             },
-            "type": "execute_actions"
+            "config": {
+              "cases": {}
+            }
           },
-          "cea30610-1806-4d2d-a907-bbdc6480ac07": {
+          "9770c173-d71b-4c89-9ac8-bf69277a2f48": {
             "type": "wait_for_response",
             "position": {
-              "left": 120,
-              "top": 680
+              "left": 1420,
+              "top": 440
             },
             "config": {
               "cases": {}
             }
           },
-          "98c37c3d-2083-4c09-8e52-29abcd0fa779": {
+          "b403e762-8f53-4ed7-9a10-8cfd2ea31afa": {
             "position": {
-              "left": 380,
-              "top": 940
+              "left": 720,
+              "top": 560
             },
             "type": "execute_actions"
           },
-          "c52a51a1-6bbf-49e4-8be5-951d286de3e1": {
+          "d72f0146-8d5b-4131-9163-4ebf1314c5f6": {
+            "type": "wait_for_response",
             "position": {
-              "left": 680,
-              "top": 580
+              "left": 720,
+              "top": 960
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "ce8ffb53-d93d-4020-8b54-4e70e9304a92": {
+            "position": {
+              "left": 1220,
+              "top": 1040
             },
             "type": "execute_actions"
           },
-          "d82c66ee-1d9f-4e65-9729-37d4968bf69a": {
+          "eac18181-0d03-4775-882b-8ba84c1eafac": {
             "position": {
-              "left": 860,
-              "top": 240
+              "left": 200,
+              "top": 1100
             },
             "type": "execute_actions"
+          },
+          "e0b7cea1-777a-479a-b8ac-26ae6a9bc790": {
+            "position": {
+              "left": 600,
+              "top": 1100
+            },
+            "type": "execute_actions"
+          },
+          "e604454a-3c44-4f93-bb7f-07de861a0f78": {
+            "position": {
+              "left": 920,
+              "top": 1100
+            },
+            "type": "execute_actions"
+          },
+          "4d718f85-1b65-4704-994a-acbfb0ae247e": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 640,
+              "top": 1540
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "423d4b13-8819-41a7-a7b1-a082bfa05a04": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 60,
+              "top": 1580
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "2a5e3969-1b44-44f2-a8e4-81f3bf12513b": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 1180,
+              "top": 1680
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "6b728925-efd4-456d-af19-205660c8f5d8": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 880,
+              "top": 1880
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "ea947cc4-d5ec-42ea-98b3-06bb9ee53833": {
+            "position": {
+              "left": 660,
+              "top": 2080
+            },
+            "type": "execute_actions"
+          },
+          "369c5085-c0b1-498c-9865-414c36b39f0b": {
+            "position": {
+              "left": 880,
+              "top": 2080
+            },
+            "type": "execute_actions"
+          },
+          "a6866365-30fb-4bf6-94cf-5b9bcd2ed36e": {
+            "position": {
+              "left": 1120,
+              "top": 2080
+            },
+            "type": "execute_actions"
+          },
+          "f315bb8f-38cc-41f6-b5ff-312b01d63c5b": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 880,
+              "top": 2580
+            },
+            "config": {
+              "cases": {}
+            }
           }
         }
       },
-      "revision": 42,
+      "revision": 260,
       "expire_after_minutes": 10080,
       "metadata": {
         "expires": 10080
@@ -392,39 +1135,35 @@
       "localization": {}
     }
   ],
-  "campaigns": [],
+  "campaigns": [
+    {
+      "uuid": "b5bc09e8-0b66-41f1-8773-fc28400bedc3",
+      "name": "Camp1",
+      "group": {
+        "uuid": "4a196ffb-1912-4d28-8115-77db5e326f21",
+        "name": "initial_user"
+      },
+      "events": []
+    }
+  ],
   "triggers": [
-    {
-      "trigger_type": "K",
-      "keyword": "ol\u00e1",
-      "flow": {
-        "uuid": "dd938cb3-c1dd-4c28-9c6b-7acfba2d6bb2",
-        "name": "Chegada voluntario"
-      },
-      "groups": [],
-      "channel": null
-    },
-    {
-      "trigger_type": "K",
-      "keyword": "oie",
-      "flow": {
-        "uuid": "dd938cb3-c1dd-4c28-9c6b-7acfba2d6bb2",
-        "name": "Chegada voluntario"
-      },
-      "groups": [],
-      "channel": null
-    },
     {
       "trigger_type": "K",
       "keyword": "oi",
       "flow": {
-        "uuid": "dd938cb3-c1dd-4c28-9c6b-7acfba2d6bb2",
-        "name": "Chegada voluntario"
+        "uuid": "16348b29-91ab-4103-8a02-4c3d5a5e5582",
+        "name": "arrival_volunteer"
       },
       "groups": [],
       "channel": null
     }
   ],
   "fields": [],
-  "groups": []
+  "groups": [
+    {
+      "uuid": "4a196ffb-1912-4d28-8115-77db5e326f21",
+      "name": "initial_user",
+      "query": null
+    }
+  ]
 }
